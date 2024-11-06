@@ -1,0 +1,160 @@
+[gd_scene load_steps=9 format=3 uid="uid://irj3enpsjqqk"]
+
+[ext_resource type="Script" path="res://ScenesAndScripts/gua.gd" id="1_3dgw6"]
+[ext_resource type="Texture2D" uid="uid://c6wme6uf12qee" path="res://Assets/Art/frame.svg" id="1_o6ah2"]
+[ext_resource type="Texture2D" uid="uid://ci1ph21wmvs88" path="res://Assets/Art/straightLine.svg" id="3_4tgqi"]
+[ext_resource type="Texture2D" uid="uid://bkwh545ylwvrt" path="res://Assets/Art/separatedLine.svg" id="4_114i0"]
+[ext_resource type="AudioStream" uid="uid://b0d0vdy4hddkc" path="res://Assets/Sound/book_page-45210.mp3" id="5_qlcm7"]
+
+[sub_resource type="Animation" id="Animation_g8duf"]
+resource_name = "flash"
+length = 2.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/MarginContainer/Flash:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.196078)]
+}
+
+[sub_resource type="Animation" id="Animation_i6d5r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/MarginContainer/Flash:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vxa1d"]
+_data = {
+"RESET": SubResource("Animation_i6d5r"),
+"flash": SubResource("Animation_g8duf")
+}
+
+[node name="Gua" type="Control"]
+custom_minimum_size = Vector2(562.5, 750)
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 4
+script = ExtResource("1_3dgw6")
+type = 1
+length = 600
+width = 50
+separation = 15
+
+[node name="Frame" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_o6ah2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Frame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 95
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 95
+theme_override_constants/margin_bottom = 75
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Frame/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Yao1" type="TextureRect" parent="Frame/MarginContainer/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(325, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_4tgqi")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Yao2" type="TextureRect" parent="Frame/MarginContainer/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(325, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_4tgqi")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Yao3" type="TextureRect" parent="Frame/MarginContainer/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(325, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_114i0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Yao4" type="TextureRect" parent="Frame/MarginContainer/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(325, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_4tgqi")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Yao5" type="TextureRect" parent="Frame/MarginContainer/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(325, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_114i0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Yao6" type="TextureRect" parent="Frame/MarginContainer/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(325, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_4tgqi")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Flash" type="ColorRect" parent="Frame/MarginContainer"]
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="ShowYao" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qlcm7")
+volume_db = 5.0
+pitch_scale = 1.5
+mix_target = 1
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vxa1d")
+}

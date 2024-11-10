@@ -1,8 +1,9 @@
 extends PanelContainer
 
 @onready var title = $MarginContainer/VBoxContainer/Title
-@onready var description = $MarginContainer/VBoxContainer/Description/Description
-@onready var author = $MarginContainer/VBoxContainer/Author
+@onready var description = $MarginContainer/VBoxContainer/Description/VBoxContainer/Description
+@onready var author = $MarginContainer/VBoxContainer/Description/VBoxContainer/Author
+@onready var allegory = $MarginContainer/VBoxContainer/Description/VBoxContainer/Allegory
 
 @onready var buttons = $MarginContainer/VBoxContainer/Buttons
 @onready var first = $MarginContainer/VBoxContainer/Buttons/First
@@ -23,6 +24,31 @@ var buttonIndex : int
 func _ready():
 	import_csv()
 	Global.text_manager = self
+	
+	# Create an HTTP request node and connect its completion signal.
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.request_completed.connect(_http_request_completed)
+	# Perform the HTTP request. The URL below returns a PNG image as of writing.
+	var error = http_request.request("https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg")
+	if error != OK:
+		push_error("An error occurred in the HTTP request.")
+
+
+# Called when the HTTP request is completed.
+func _http_request_completed(result, _response_code, _headers, body):
+	if result != HTTPRequest.RESULT_SUCCESS:
+		push_error("Image couldn't be downloaded. Try a different image.")
+	
+	var image = Image.new()
+	var error = image.load_jpg_from_buffer(body)
+	if error != OK:
+		push_error("Couldn't load the image.")
+
+	var texture = ImageTexture.create_from_image(image)
+
+	# Display the image in a TextureRect node.
+	allegory.set_texture(texture)
 
 func import_csv():
 	if FileAccess.file_exists(file_path):

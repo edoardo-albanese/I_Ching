@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cugekvl7dp8og"]
+[gd_scene load_steps=34 format=3 uid="uid://cugekvl7dp8og"]
 
 [ext_resource type="PackedScene" uid="uid://g45i3lrmr650" path="res://ScenesAndScripts/background.tscn" id="1_5xq1l"]
 [ext_resource type="Script" path="res://ScenesAndScripts/main.gd" id="1_vc41i"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://hh24u2c0xwky" path="res://Assets/Art/soundOff.svg" id="8_wxcj1"]
 [ext_resource type="Texture2D" uid="uid://bugjowifj4anf" path="res://Assets/Art/DropdownOpen.svg" id="9_42wdf"]
 [ext_resource type="Texture2D" uid="uid://dwfv82prihfqq" path="res://Assets/Art/DropdownClose.svg" id="10_aw2q8"]
+[ext_resource type="FontFile" uid="uid://ddegh0j6c43hy" path="res://Assets/Fonts/Cheese Burger.otf" id="12_xlrk2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_akns2"]
 bg_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
@@ -79,45 +80,53 @@ Label/fonts/font = ExtResource("7_okc3s")
 Panel/styles/panel = SubResource("StyleBoxFlat_iwydg")
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_fmbga")
 
-[sub_resource type="Animation" id="Animation_foopr"]
-resource_name = "dropdown"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:custom_minimum_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(-2, -2),
-"update": 0,
-"values": [Vector2(0, 75), Vector2(0, 400)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/VBoxContainer/Content:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.31),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MarginContainer/VBoxContainer/Content:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phs2f"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eteav"]
+bg_color = Color(0.87451, 0.87451, 0.87451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1h2ky"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jewtm"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.87451, 0.87451, 0.87451, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_pb5hs"]
+LineEdit/colors/caret_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.6)
+LineEdit/styles/focus = SubResource("StyleBoxFlat_phs2f")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_eteav")
+TextEdit/colors/caret_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.6)
+TextEdit/colors/font_selected_color = Color(0, 0, 0, 0)
+TextEdit/fonts/font = ExtResource("12_xlrk2")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_1h2ky")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_jewtm")
 
 [sub_resource type="Animation" id="Animation_ujlun"]
 length = 0.001
@@ -156,6 +165,46 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_foopr"]
+resource_name = "dropdown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 75), Vector2(0, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/Content:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.31),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/Content:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uqb0j"]
@@ -276,7 +325,7 @@ layout_mode = 2
 
 [node name="Title" type="HBoxContainer" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 110
 alignment = 1
 
 [node name="Question" type="Label" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer/Title"]
@@ -334,6 +383,7 @@ text = "Obiettivo"
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+theme = SubResource("Theme_pb5hs")
 theme_override_constants/separation = 45
 
 [node name="Text" type="LineEdit" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer/Content/LineEdits"]

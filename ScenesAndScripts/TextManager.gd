@@ -1,9 +1,9 @@
 extends PanelContainer
 
 @onready var title = $MarginContainer/VBoxContainer/Title
-@onready var description = $MarginContainer/VBoxContainer/Description/VBoxContainer/Description
-@onready var author = $MarginContainer/VBoxContainer/Description/VBoxContainer/Author
-@onready var allegory = $MarginContainer/VBoxContainer/Description/VBoxContainer/Allegory
+@onready var description = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Description
+@onready var author = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Author
+@onready var allegory = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Allegory
 
 @onready var buttons = $MarginContainer/VBoxContainer/Buttons
 @onready var first = $MarginContainer/VBoxContainer/Buttons/First
@@ -13,42 +13,84 @@ extends PanelContainer
 
 var file_path = "res://Assets/iChing.csv"
 
+var id : String
+var buttonIndex : int
+
 var titles : Array = []
 var descriptions : Array = []
 var ids : Array = []
 var authors : Array = []
-
-var id : String
-var buttonIndex : int
+var images : Dictionary = {
+	1: preload("res://Images/Esagrammo 1 - Edoardo Albanese.jpg"),
+	2: preload("res://Images/Esagrammo 2 - Edoardo Albanese.jpg"),
+	3: null,
+	4: null,
+	5: null,
+	6: null,
+	7: preload("res://Images/CHING 7 MATTEO CASSANITI.jpeg"),
+	8: preload("res://Images/CHING 8 MATTEO CASSANITI.jpeg"),
+	9: null,
+	10: null,
+	11: null,
+	12: null,
+	13: null,
+	14: null,
+	15: preload("res://Images/Esagramma 15 Fimiani .JPG"),
+	16: preload("res://Images/Esagramma 16 Fimiani.JPG"),
+	17: preload("res://Images/ching 17-Lorenza Fiorillo.jpg"),
+	18: null,
+	19: preload("res://Images/19-esagramma.jpg"),
+	20: preload("res://Images/20-esagramma.jpg"),
+	21: null,
+	22: null,
+	23: preload("res://Images/I ching n23 Eduardo Hakobyan.jpg"),
+	24: preload("res://Images/I ching n24 Eduardo Hakobyan.jpg"),
+	25: null,
+	26: null,
+	27: preload("res://Images/ching 27.webp"),
+	28: preload("res://Images/ching 28.webp"),
+	29: null,
+	30: null,
+	31: preload("res://Images/Esagramma 31 Pan Yijie.jpg"),
+	32: preload("res://Images/Esagramma 32 Pan Yijie.jpg"),
+	33: null,
+	34: null,
+	35: preload("res://Images/Esagramma 35 Riccardo Piacente.webp"),
+	36: preload("res://Images/Esagramma 36 Riccardo Piacente.webp"),
+	37: preload("res://Images/Esagramma 37-Maria Grazia Pisano.jpg"),
+	38: preload("res://Images/Esagramma 38-Maria Grazia Pisano.jpg"),
+	39: preload("res://Images/Leonardo respiggi esagramma 39.jpg"),
+	40: preload("res://Images/Leonardo respiggi esagramma 40.jpg"),
+	41: preload("res://Images/ROMANO ESAGRAMMA 41.jpg"),
+	42: preload("res://Images/ROMANO ESAGRAMMA 42.jpg"),
+	43: null,
+	44: null,
+	45: null,
+	46: null,
+	47: preload("res://Images/ching 47 _L_assillo_ Sole Diana.jpg"),
+	48: preload("res://Images/ching 49 realistica.jpg"),
+	49: preload("res://Images/ching 49 realistica.jpg"),
+	50: preload("res://Images/ching 50 realistica.jpg"),
+	51: preload("res://Images/ESAGRAMMA 51 ROBERTO VARETTO.jpg"),
+	52: preload("res://Images/ESAGRAMMA 52ROBERTO VARETTO.jpg"),
+	53: null,
+	54: null,
+	55: preload("res://Images/esagramma 55 Irene Vittoria_.jpg"),
+	56: preload("res://Images/esagramma 56 Irene Vittoria.jpg"),
+	57: null,
+	58: null,
+	59: null,
+	60: null,
+	61: preload("res://Images/Esagramma 61 - Francesca Zhou.jpg"),
+	62: preload("res://Images/Esagramma 62 - Francesca Zhou.jpg"),
+	63: preload("res://Images/Esagramma 63-ZhouGioia.jpg"),
+	64: preload("res://Images/Esagramma 64-ZhouGioia.jpg")
+	
+}
 
 func _ready():
 	import_csv()
 	Global.text_manager = self
-	
-	# Create an HTTP request node and connect its completion signal.
-	var http_request = HTTPRequest.new()
-	add_child(http_request)
-	http_request.request_completed.connect(_http_request_completed)
-	# Perform the HTTP request. The URL below returns a PNG image as of writing.
-	var error = http_request.request("https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg")
-	if error != OK:
-		push_error("An error occurred in the HTTP request.")
-
-
-# Called when the HTTP request is completed.
-func _http_request_completed(result, _response_code, _headers, body):
-	if result != HTTPRequest.RESULT_SUCCESS:
-		push_error("Image couldn't be downloaded. Try a different image.")
-	
-	var image = Image.new()
-	var error = image.load_jpg_from_buffer(body)
-	if error != OK:
-		push_error("Couldn't load the image.")
-
-	var texture = ImageTexture.create_from_image(image)
-
-	# Display the image in a TextureRect node.
-	allegory.set_texture(texture)
 
 func import_csv():
 	if FileAccess.file_exists(file_path):
@@ -89,7 +131,9 @@ func update_text():
 			index = i
 	title.text = str(index) + ". " + titles[index]
 	description.text = descriptions[index]
+	description.visible_characters = 400
 	author.text = "Scritto da: " + authors[index]
+	allegory.texture = images[index]
 
 
 func _on_first_pressed():

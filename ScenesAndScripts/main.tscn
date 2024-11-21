@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cugekvl7dp8og"]
+[gd_scene load_steps=35 format=3 uid="uid://cugekvl7dp8og"]
 
 [ext_resource type="PackedScene" uid="uid://g45i3lrmr650" path="res://ScenesAndScripts/background.tscn" id="1_5xq1l"]
 [ext_resource type="Script" path="res://ScenesAndScripts/main.gd" id="1_vc41i"]
@@ -60,6 +60,16 @@ Button/styles/hover = SubResource("StyleBoxFlat_bbvhq")
 Button/styles/normal = SubResource("StyleBoxFlat_6orwx")
 Button/styles/pressed = SubResource("StyleBoxFlat_kwec1")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4c7y"]
+bg_color = Color(0.21, 0.21, 0.21, 1)
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0.21, 0.21, 0.21, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwydg"]
 bg_color = Color(0.678431, 0.537255, 0.0901961, 1)
 border_width_left = 15
@@ -73,9 +83,10 @@ expand_margin_top = 5.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fmbga"]
 
 [sub_resource type="Theme" id="Theme_jcagp"]
+HSeparator/styles/separator = SubResource("StyleBoxFlat_k4c7y")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 5
-Label/font_sizes/font_size = 24
+Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("7_okc3s")
 Panel/styles/panel = SubResource("StyleBoxFlat_iwydg")
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_fmbga")
@@ -84,11 +95,13 @@ PanelContainer/styles/panel = SubResource("StyleBoxEmpty_fmbga")
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eteav"]
+content_margin_left = 5.0
+content_margin_right = 5.0
 bg_color = Color(0.87451, 0.87451, 0.87451, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 4
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 6
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -118,6 +131,7 @@ corner_radius_bottom_left = 10
 LineEdit/colors/caret_color = Color(0, 0, 0, 1)
 LineEdit/colors/font_color = Color(0, 0, 0, 1)
 LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.6)
+LineEdit/font_sizes/font_size = 24
 LineEdit/styles/focus = SubResource("StyleBoxFlat_phs2f")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_eteav")
 TextEdit/colors/caret_color = Color(0, 0, 0, 1)
@@ -166,10 +180,35 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/HSeparator:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/HSeparator:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_foopr"]
 resource_name = "dropdown"
 length = 0.5
+step = 0.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -203,6 +242,30 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.3, 0.5),
 "transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/HSeparator:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.305378),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/HSeparator:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
@@ -322,25 +385,32 @@ theme_override_constants/margin_bottom = 35
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="Title" type="HBoxContainer" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 110
+theme_override_constants/separation = 200
 alignment = 1
 
 [node name="Question" type="Label" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer/Title"]
 layout_mode = 2
 theme = ExtResource("8_2ef0r")
+theme_override_font_sizes/font_size = 50
 text = "Domanda"
 
 [node name="DropdownButton" type="TextureButton" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer/Title"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("9_42wdf")
 texture_pressed = ExtResource("10_aw2q8")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="HSeparator" type="HSeparator" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 
 [node name="Content" type="GridContainer" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer"]
 visible = false
@@ -351,7 +421,7 @@ theme_override_constants/h_separation = 55
 columns = 2
 
 [node name="Labels" type="VBoxContainer" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer/Content"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(175, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -380,11 +450,12 @@ theme_override_fonts/font = ExtResource("7_okc3s")
 text = "Obiettivo"
 
 [node name="LineEdits" type="VBoxContainer" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer/Content"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = SubResource("Theme_pb5hs")
-theme_override_constants/separation = 45
+theme_override_constants/separation = 40
 
 [node name="Text" type="LineEdit" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer/Content/LineEdits"]
 custom_minimum_size = Vector2(100, 0)

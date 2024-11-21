@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dhxqdfxt4k8xn"]
+[gd_scene load_steps=39 format=3 uid="uid://dhxqdfxt4k8xn"]
 
 [ext_resource type="Script" path="res://ScenesAndScripts/result_board.gd" id="1_08047"]
 [ext_resource type="Theme" uid="uid://ctsjp2t1ym3el" path="res://ScenesAndScripts/Titles.tres" id="1_ndlyx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://d0sncsyvw210a" path="res://ScenesAndScripts/2nd text.tres" id="3_ai7yt"]
 [ext_resource type="FontFile" uid="uid://ddegh0j6c43hy" path="res://Assets/Fonts/Cheese Burger.otf" id="3_yxhbc"]
 [ext_resource type="FontFile" uid="uid://bvyetbh4mdef1" path="res://Assets/Fonts/RoundStyle-Bold.ttf" id="4_d64nc"]
+[ext_resource type="Texture2D" uid="uid://cie31xbk0f6rc" path="res://Images/19-esagramma.jpg" id="6_5vbwl"]
 [ext_resource type="FontFile" uid="uid://667cwqq4m2ke" path="res://Assets/Fonts/Stimcard.ttf" id="6_0327e"]
 [ext_resource type="AudioStream" uid="uid://mxpyqy1irpks" path="res://Assets/Sound/UIClickNegative.mp3" id="6_ejlu1"]
 [ext_resource type="AudioStream" uid="uid://g5bt64hhi6hi" path="res://Assets/Sound/fast-whoosh-118248.mp3" id="7_0vdtw"]
@@ -465,35 +466,38 @@ text = "24. THE PRINCESS"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Description" type="ScrollContainer" parent="TextManager/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 300)
+[node name="ScrollContainer" type="ScrollContainer" parent="TextManager/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 400)
 layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("3_ai7yt")
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextManager/MarginContainer/VBoxContainer/Description"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextManager/MarginContainer/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(700, 400)
 layout_mode = 2
 
-[node name="Description" type="Label" parent="TextManager/MarginContainer/VBoxContainer/Description/VBoxContainer"]
-custom_minimum_size = Vector2(590, 450)
+[node name="Description" type="Label" parent="TextManager/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 theme = ExtResource("3_ai7yt")
 text = "è ☰ (乾 qián)Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="Author" type="Label" parent="TextManager/MarginContainer/VBoxContainer/Description/VBoxContainer"]
+[node name="Author" type="Label" parent="TextManager/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_ai7yt")
 theme_override_colors/font_color = Color(0.843137, 0.67451, 0.12549, 1)
 text = "Scritto da: X"
 horizontal_alignment = 1
 
-[node name="Allegory" type="TextureRect" parent="TextManager/MarginContainer/VBoxContainer/Description/VBoxContainer"]
-custom_minimum_size = Vector2(0, 287)
+[node name="Allegory" type="TextureRect" parent="TextManager/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-expand_mode = 5
+texture = ExtResource("6_5vbwl")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="RispostaPersonale" type="Label" parent="TextManager/MarginContainer/VBoxContainer"]
 layout_mode = 2

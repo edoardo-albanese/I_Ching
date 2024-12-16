@@ -8,6 +8,7 @@ extends PanelContainer
 @onready var buttons = $MarginContainer/VBoxContainer/Buttons
 @onready var first = $MarginContainer/VBoxContainer/Buttons/First
 @onready var second = $MarginContainer/VBoxContainer/Buttons/Second
+@onready var scroll_container = $MarginContainer/VBoxContainer/ScrollContainer
 
 @onready var click = $"../Sounds/Click"
 
@@ -25,20 +26,20 @@ var images : Dictionary = {
 	2: preload("res://Images/Esagrammo 2 - Edoardo Albanese.jpg"),
 	3: null,
 	4: null,
-	5: null,
-	6: null,
+	5: preload("res://Images/5_BRUSA.jpg"), #ci sta,
+	6: preload("res://Images/6_BRUSA.jpg"), #ci sta,
 	7: preload("res://Images/CHING 7 MATTEO CASSANITI.jpeg"),
 	8: preload("res://Images/CHING 8 MATTEO CASSANITI.jpeg"),
 	9: null,
 	10: null,
 	11: null,
 	12: null,
-	13: null,
-	14: null,
+	13: preload("res://Images/DI_MARZO_Ching_13.jpg"),
+	14: preload("res://Images/DI_MARZO_Ching_14.jpg"),
 	15: preload("res://Images/Esagramma 15 Fimiani .JPG"),
 	16: preload("res://Images/Esagramma 16 Fimiani.JPG"),
 	17: preload("res://Images/ching 17-Lorenza Fiorillo.jpg"),
-	18: null,
+	18: preload("res://Images/ching 18 Lorenza Fiorillo.jpg"), #ci sta
 	19: preload("res://Images/19-esagramma.jpg"),
 	20: preload("res://Images/20-esagramma.jpg"),
 	21: null,
@@ -101,7 +102,7 @@ func import_csv():
 		while !file.eof_reached():
 			var data_set = Array(file.get_csv_line())
 			titles.append(data_set[3])
-			descriptions.append(data_set[4])
+			descriptions.append(data_set[5])
 			ids.append(data_set[1])
 			authors.append(data_set[0])
 		file.close()
@@ -134,6 +135,7 @@ func update_text():
 	description.visible_characters = 400
 	author.text = "Scritto da: " + authors[index]
 	allegory.texture = images[index]
+	scroll_container.scroll_vertical = 0
 
 
 func _on_first_pressed():

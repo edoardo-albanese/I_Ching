@@ -462,12 +462,11 @@ custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme = ExtResource("1_ndlyx")
 theme_override_font_sizes/font_size = 50
-text = "24. THE PRINCESS"
+text = "24. Dopo il compimento (yi ji)"
 horizontal_alignment = 1
-autowrap_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TextManager/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(700, 400)
+custom_minimum_size = Vector2(700, 450)
 layout_mode = 2
 horizontal_scroll_mode = 0
 
@@ -494,9 +493,10 @@ text = "Scritto da: X"
 horizontal_alignment = 1
 
 [node name="Allegory" type="TextureRect" parent="TextManager/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 450)
 layout_mode = 2
 texture = ExtResource("6_5vbwl")
-expand_mode = 4
+expand_mode = 1
 stretch_mode = 5
 
 [node name="RispostaPersonale" type="Label" parent="TextManager/MarginContainer/VBoxContainer"]

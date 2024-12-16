@@ -460,7 +460,7 @@ theme_override_constants/separation = 40
 [node name="Text" type="LineEdit" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer/Content/LineEdits"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-placeholder_text = "Vantaggi..."
+placeholder_text = "Situazione..."
 alignment = 2
 max_length = 80
 expand_to_text_length = true
@@ -468,7 +468,7 @@ expand_to_text_length = true
 [node name="Text2" type="LineEdit" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer/Content/LineEdits"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-placeholder_text = "Situazione..."
+placeholder_text = "Vantaggi..."
 alignment = 2
 max_length = 80
 expand_to_text_length = true

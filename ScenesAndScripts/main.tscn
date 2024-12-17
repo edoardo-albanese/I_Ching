@@ -387,20 +387,27 @@ theme_override_constants/margin_bottom = 35
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Title" type="HBoxContainer" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer"]
+[node name="Title" type="Control" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
-theme_override_constants/separation = 200
-alignment = 1
 
 [node name="Question" type="Label" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer/Title"]
-layout_mode = 2
+layout_mode = 1
+offset_right = 180.0
+offset_bottom = 54.0
 theme = ExtResource("8_2ef0r")
 theme_override_font_sizes/font_size = 50
 text = "Domanda"
 
 [node name="DropdownButton" type="TextureButton" parent="UpSection/VBoxContainer/QuestionMenu/MarginContainer/VBoxContainer/Title"]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 54.0
+grow_horizontal = 0
 toggle_mode = true
 texture_normal = ExtResource("9_42wdf")
 texture_pressed = ExtResource("10_aw2q8")

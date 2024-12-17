@@ -50,8 +50,8 @@ var images : Dictionary = {
 	26: preload("res://Images/Esagramma 26 kovari.jpeg"),
 	27: preload("res://Images/ching 27.webp"),
 	28: preload("res://Images/ching 28.webp"),
-	29: null,
-	30: null,
+	29: preload("res://Images/MAISTO - ESAGRAMMA 29.jpg"),
+	30: preload("res://Images/MAISTO - ESAGRAMMA 30.jpg"),
 	31: preload("res://Images/Esagramma 31 Pan Yijie.jpg"),
 	32: preload("res://Images/Esagramma 32 Pan Yijie.jpg"),
 	33: null,
@@ -64,12 +64,12 @@ var images : Dictionary = {
 	40: preload("res://Images/Leonardo respiggi esagramma 40.jpg"),
 	41: preload("res://Images/ROMANO ESAGRAMMA 41.jpg"),
 	42: preload("res://Images/ROMANO ESAGRAMMA 42.jpg"),
-	43: null,
-	44: null,
+	43: preload("res://Images/Sansone-43.jpg"),
+	44: preload("res://Images/Sansone-44.jpg"),
 	45: null,
 	46: null,
 	47: preload("res://Images/ching 47 _L_assillo_ Sole Diana.jpg"),
-	48: preload("res://Images/ching 49 realistica.jpg"),
+	48: preload("res://Images/ching 48 _il pozzo_ Sole Diana.jpg"),
 	49: preload("res://Images/ching 49 realistica.jpg"),
 	50: preload("res://Images/ching 50 realistica.jpg"),
 	51: preload("res://Images/ESAGRAMMA 51 ROBERTO VARETTO.jpg"),
@@ -86,7 +86,6 @@ var images : Dictionary = {
 	62: preload("res://Images/Esagramma 62 - Francesca Zhou.jpg"),
 	63: preload("res://Images/Esagramma 63-ZhouGioia.jpg"),
 	64: preload("res://Images/Esagramma 64-ZhouGioia.jpg")
-	
 }
 
 func _ready():
@@ -135,6 +134,10 @@ func update_text():
 	description.visible_characters = 400
 	author.text = "Scritto da: " + authors[index]
 	allegory.texture = images[index]
+	if allegory.texture == null:
+		allegory.hide()
+	else:
+		allegory.show()
 	scroll_container.scroll_vertical = 0
 
 

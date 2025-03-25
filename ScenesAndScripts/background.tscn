@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rrmdf"]
 _data = {
-"RESET": SubResource("Animation_ggl3d"),
-"default": SubResource("Animation_iqihu")
+&"RESET": SubResource("Animation_ggl3d"),
+&"default": SubResource("Animation_iqihu")
 }
 
 [node name="Background" type="Control"]

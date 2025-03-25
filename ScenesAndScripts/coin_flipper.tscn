@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://3l0oibljbbmd"]
 
-[ext_resource type="Script" path="res://ScenesAndScripts/coin_flipper.gd" id="1_jpk6n"]
+[ext_resource type="Script" uid="uid://br71rags65sed" path="res://ScenesAndScripts/coin_flipper.gd" id="1_jpk6n"]
 [ext_resource type="Texture2D" uid="uid://cb7rvd8oy1pqf" path="res://Assets/Art/coinCross.svg" id="1_n7riv"]
 [ext_resource type="FontFile" uid="uid://bvyetbh4mdef1" path="res://Assets/Fonts/RoundStyle-Bold.ttf" id="3_5i8dv"]
 [ext_resource type="AudioStream" uid="uid://cb5r1ueajpgtn" path="res://Assets/Sound/coin-flip-shimmer-85750.mp3" id="3_toohn"]

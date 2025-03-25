@@ -7,12 +7,13 @@ var yao : int = 0
 var yao2 : int = 0
 var id : String
 var id2 : String
+var safe_ids = range(64)
+var unsafe_ids = [3, 4, 9, 10, 21, 22, 33, 34, 45, 46, 49, 50, 53, 54]
+var incremented_array = []
 
-#func _process(delta):
-	#print(
-	#"binary:", binary,
-	#" yao:", yao,
-	#" yao2:", yao2,
-	#" id:", id,
-	#" id2:", id2
-	#)
+func _ready():
+	for number in safe_ids:
+		incremented_array.append(number + 1)
+	safe_ids = incremented_array
+	for i in unsafe_ids:
+		safe_ids.erase(i)

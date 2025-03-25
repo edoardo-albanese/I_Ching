@@ -1,10 +1,25 @@
 [gd_scene load_steps=9 format=3 uid="uid://irj3enpsjqqk"]
 
-[ext_resource type="Script" path="res://ScenesAndScripts/gua.gd" id="1_3dgw6"]
+[ext_resource type="Script" uid="uid://b7ag4sb3pxfyl" path="res://ScenesAndScripts/gua.gd" id="1_3dgw6"]
 [ext_resource type="Texture2D" uid="uid://c6wme6uf12qee" path="res://Assets/Art/frame.svg" id="1_o6ah2"]
 [ext_resource type="Texture2D" uid="uid://ci1ph21wmvs88" path="res://Assets/Art/straightLine.svg" id="3_4tgqi"]
 [ext_resource type="Texture2D" uid="uid://bkwh545ylwvrt" path="res://Assets/Art/separatedLine.svg" id="4_114i0"]
 [ext_resource type="AudioStream" uid="uid://b0d0vdy4hddkc" path="res://Assets/Sound/book_page-45210.mp3" id="5_qlcm7"]
+
+[sub_resource type="Animation" id="Animation_i6d5r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frame/MarginContainer/Flash:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_g8duf"]
 resource_name = "flash"
@@ -24,25 +39,10 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.196078)]
 }
 
-[sub_resource type="Animation" id="Animation_i6d5r"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Frame/MarginContainer/Flash:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vxa1d"]
 _data = {
-"RESET": SubResource("Animation_i6d5r"),
-"flash": SubResource("Animation_g8duf")
+&"RESET": SubResource("Animation_i6d5r"),
+&"flash": SubResource("Animation_g8duf")
 }
 
 [node name="Gua" type="Control"]

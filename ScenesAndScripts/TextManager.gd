@@ -88,9 +88,11 @@ var images : Dictionary = {
 	64: preload("res://Images/Esagramma 64-ZhouGioia.jpg")
 }
 
+
 func _ready():
 	import_csv()
 	Global.text_manager = self
+
 
 func import_csv():
 	if FileAccess.file_exists(file_path):
@@ -125,13 +127,14 @@ func update_text():
 		id = Global.id2
 		first.disabled = false
 		second.disabled = true
-	var index
+	var index : int
 	for i in ids.size():
 		if id == ids[i]:
 			index = i
+	if Global.unsafe_ids.has(index):
+		index = Global.safe_ids.pick_random()
 	title.text = str(index) + ". " + titles[index]
 	description.text = descriptions[index]
-	description.visible_characters = 400
 	author.text = "Scritto da: " + authors[index]
 	allegory.texture = images[index]
 	if allegory.texture == null:

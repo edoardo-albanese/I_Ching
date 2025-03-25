@@ -1,8 +1,8 @@
 [gd_scene load_steps=33 format=3 uid="uid://dhxqdfxt4k8xn"]
 
-[ext_resource type="Script" path="res://ScenesAndScripts/result_board.gd" id="1_08047"]
+[ext_resource type="Script" uid="uid://ct76c8u3mjtf2" path="res://ScenesAndScripts/result_board.gd" id="1_08047"]
 [ext_resource type="Theme" uid="uid://ctsjp2t1ym3el" path="res://ScenesAndScripts/Titles.tres" id="1_ndlyx"]
-[ext_resource type="Script" path="res://ScenesAndScripts/TextManager.gd" id="2_ltu7v"]
+[ext_resource type="Script" uid="uid://btjc6w4ps5y44" path="res://ScenesAndScripts/TextManager.gd" id="2_ltu7v"]
 [ext_resource type="Theme" uid="uid://d0sncsyvw210a" path="res://ScenesAndScripts/2nd text.tres" id="3_ai7yt"]
 [ext_resource type="FontFile" uid="uid://ddegh0j6c43hy" path="res://Assets/Fonts/Cheese Burger.otf" id="3_yxhbc"]
 [ext_resource type="FontFile" uid="uid://bvyetbh4mdef1" path="res://Assets/Fonts/RoundStyle-Bold.ttf" id="4_d64nc"]
@@ -332,8 +332,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_puqs7"]
 _data = {
-"RESET": SubResource("Animation_72uw7"),
-"show": SubResource("Animation_8ogc3")
+&"RESET": SubResource("Animation_72uw7"),
+&"show": SubResource("Animation_8ogc3")
 }
 
 [node name="ResultBoard" type="Control"]
@@ -391,26 +391,26 @@ alignment = 1
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = SubResource("Theme_i2fll")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 text = "1"
 
 [node name="Second" type="Button" parent="TextManager/MarginContainer/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = SubResource("Theme_0hncm")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 text = "2"
 
 [node name="Title" type="Label" parent="TextManager/MarginContainer/VBoxContainer"]
@@ -439,8 +439,6 @@ text = "è ☰ (乾 qián)Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem 
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-visible_characters = 0
-visible_ratio = 0.0
 
 [node name="Author" type="Label" parent="TextManager/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -465,7 +463,7 @@ text = "RICOMINCIA"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_puqs7")
+&"": SubResource("AnimationLibrary_puqs7")
 }
 
 [node name="Sounds" type="Node" parent="."]

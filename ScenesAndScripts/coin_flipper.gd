@@ -75,9 +75,6 @@ func _on_flip_pressed():
 	if Global.yao < 6:
 		flip()
 
-
 func _on_reset():
 	flip_b.text = "LANCIA!"
 	flip_b.disabled = false
-
-
